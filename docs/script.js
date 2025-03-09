@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Web Speech API で「くぅー」を発音（感情を強調）
         let msg = new SpeechSynthesisUtterance("くぅーーー！");
         msg.lang = 'ja-JP';
-        msg.pitch =  7.8;
-        msg.rate = 0.3;
-        msg.volume = 3.7; // 声のボリュームを上げる
+        msg.pitch = 2.0;  // 7.8 → 2.0 にして試す
+        msg.rate = 0.7;   // 0.3 → 0.7 にして試す
+        msg.volume = 1.0; // 3.7 → 1.0 にしてみる
         speechSynthesis.speak(msg);
 
     });
