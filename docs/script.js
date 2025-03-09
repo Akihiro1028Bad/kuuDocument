@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         void kuuText.offsetWidth; // ← これでリセットを強制する
     
         // くぅーのテキスト変化
-        kuuText.textContent = "くぅーーー！";
+        kuuText.textContent = "くぅー！";
         
         // 複数のアニメーションを順番に適用
         kuuText.classList.add('color-change')
