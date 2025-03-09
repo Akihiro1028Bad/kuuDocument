@@ -1,0 +1,260 @@
+/* ルート変数の定義 - サイト全体のカラーテーマとスタイル設定 */
+:root {
+    --primary: #6a11cb; /* プライマリカラー - 紫色のグラデーション開始色 */
+    --secondary: #2575fc; /* セカンダリカラー - 青色のグラデーション終了色 */
+    --text: #333; /* 基本テキストカラー - ダークグレー */
+    --light-bg: #f8f9fa; /* 薄い背景色 - 例文や補足情報の背景 */
+    --border: #e0e0e0; /* 境界線の色 - 薄いグレー */
+    --highlight: #ff9a3c; /* ハイライトカラー - オレンジ色 */
+    --card-bg: white; /* カード背景色 - 白色 */
+}
+
+/* 基本的なボディスタイル - 全体のフォントとレイアウト設定 */
+body {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif; /* 日本語対応フォント優先 */
+    line-height: 1.6; /* 行間 */
+    color: var(--text); /* テキスト色 */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* 背景グラデーション */
+    margin: 0;
+    padding: 0;
+}
+
+/* コンテンツの最大幅を制限するコンテナ */
+.container {
+    max-width: 800px; /* 最大幅 */
+    margin: 0 auto; /* 中央揃え */
+    padding: 20px;
+}
+
+/* ヘッダーのスタイル - ページ上部のタイトル部分 */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); /* グラデーション背景 */
+    color: white;
+    border-radius: 10px; /* 角丸 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 影効果 */
+}
+
+/* 見出しレベル1のスタイル - メインタイトル */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 見出しレベル2のスタイル - セクションタイトル */
+h2 {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondary); /* 下線装飾 */
+}
+
+/* 見出しレベル3のスタイル - サブセクションタイトル */
+h3 {
+    font-size: 1.3rem;
+    color: var(--secondary);
+    margin-top: 1.5rem;
+}
+
+/* 「くぅー」についての説明セクション */
+.about-section {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+/* 汎用セクションスタイル - 各コンテンツブロック */
+.section {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease; /* ホバー時のアニメーション用 */
+}
+
+/* セクションのホバー効果 - マウスを乗せた時に少し浮き上がる */
+.section:hover {
+    transform: translateY(-5px);
+}
+
+/* 例文スタイル */
+.example {
+    background-color: var(--light-bg);
+    border-left: 4px solid var(--highlight); /* 左側の装飾線 */
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0 5px 5px 0; /* 右側だけ角丸に */
+}
+
+/* 絵文字スタイル */
+.emoji {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+}
+
+/* タグスタイル - シチュエーションラベルなど */
+.tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px; /* 丸みを持たせる */
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* くぅーボタンスタイル - 発音などの操作用 */
+.kuu-button {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ボタンのホバー効果 */
+.kuu-button:hover {
+    transform: translateY(-3px); /* 少し上に浮かせる */
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2); /* 影を強調 */
+}
+
+/* 発音セクションのレイアウト */
+.pronunciation-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* 発音カードスタイル */
+.pronunciation-card {
+    background-color: var(--light-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    width: 48%; /* 2列レイアウト用 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* サマリーセクションスタイル - 重要なポイントのまとめ */
+.summary {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); /* ピンク系グラデーション */
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+/* ツールチップの基本スタイル - 補足情報の表示用 */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted var(--primary); /* 点線下線 */
+    cursor: help; /* ヘルプカーソル */
+}
+
+/* ツールチップテキストのスタイル */
+.tooltip .tooltiptext {
+    visibility: hidden; /* 初期状態は非表示 */
+    width: 200px;
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1; /* 重なり順序 */
+    bottom: 125%; /* ポジション調整 */
+    left: 50%;
+    margin-left: -100px; /* 中央揃え調整 */
+    opacity: 0;
+    transition: opacity 0.3s; /* フェードイン効果 */
+}
+
+/* ホバー時にツールチップを表示 */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* くぅーデモンストレーションエリア */
+.kuu-demo {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* くぅーの文字を中央揃え & inline-block に */
+.kuu-text {
+    font-size: 3rem;
+    display: inline-block; /* 重要 */
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 呼吸アニメーション定義 - サイズが大きくなったり小さくなったりする効果 */
+@keyframes breathe {
+    0%, 100% { transform: scale(1); } /* 開始と終了は通常サイズ */
+    50% { transform: scale(1.1); } /* 中間点で10%拡大 */
+}
+
+/* フッタースタイル - ページ下部の情報 */
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1rem;
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+/* レスポンシブ対応 - 画面サイズに応じたスタイル調整 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px; /* 狭い画面では余白を少なく */
+    }
+    
+    h1 {
+        font-size: 2rem; /* タイトルサイズ縮小 */
+    }
+    
+    .pronunciation-card {
+        width: 100%; /* 縦1列レイアウトに */
+    }
+}
+
+/* カテゴリーセクションのスタイル - 使用シーンなどのカテゴリー表示 */
+.category-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+/* カテゴリーカードのスタイル */
+.category-card {
+    width: 20%; /* 3列レイアウト */
+    min-width: 200px; /* 最小幅保証 */
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* カテゴリーアイコンのスタイル */
+.category-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
