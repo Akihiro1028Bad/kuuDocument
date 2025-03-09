@@ -4,24 +4,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const pronounceButton = document.getElementById('pronounceButton');
     const kuuUsageSection = document.getElementById('kuuUsage');
 
-    kuuText.style.animation = 'breathe 1.5s infinite ease-in-out';
+    //kuuText.style.animation = 'breathe 1.5s infinite ease-in-out';
 
     pronounceButton.addEventListener('click', function() {
         // すでにアニメーションが適用されていた場合、一旦削除して再適用
-        kuuText.classList.remove('shake', 'wave', 'color-change');
+        kuuText.classList.remove('color-change');
         void kuuText.offsetWidth; // ← これでリセットを強制する
-
+    
         // くぅーのテキスト変化
         kuuText.textContent = "くぅーーー！";
-        setTimeout(() => kuuText.textContent = "くぅー", 2000);
+        
+        // 複数のアニメーションを順番に適用
+        kuuText.classList.add('color-change')
 
-        // Web Speech API で「くぅー」を発音（感情を強調）
-        let msg = new SpeechSynthesisUtterance("くぅーーー！");
-        msg.lang = 'ja-JP';
-        msg.pitch = 1.5;  // 7.8 → 1.5（iPhoneでは極端に高いピッチは不可）
-        msg.rate = 0.7;   // 0.3 → 0.7（0.3は遅すぎるため調整）
-        msg.volume = 1.0; // 3.7 → 1.0（Safariでは1.0以上は無視される）
-        speechSynthesis.speak(msg);
+        setTimeout(() => {
+            kuuText.classList.remove('color-change');
+            kuuText.textContent = "くぅー";
+        }, 3000);
 
     });
     
