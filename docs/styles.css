@@ -207,6 +207,32 @@ h3 {
     -webkit-text-fill-color: transparent;
 }
 
+  /* 色変化アニメーション - グラデーションが変化する効果 */
+@keyframes colorChange {
+    0% { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); }
+    50% { background: linear-gradient(135deg, #ff9a3c 0%, #ff4e50 100%); }
+    100% { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); }
+}
+
+  /* 発光効果 */
+@keyframes glow {
+    0%, 100% { text-shadow: 0 0 10px rgba(106, 17, 203, 0.7), 0 0 20px rgba(37, 117, 252, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(106, 17, 203, 0.9), 0 0 30px rgba(37, 117, 252, 0.7), 0 0 40px rgba(255, 154, 60, 0.5); }
+}
+
+  /* テキスト拡大アニメーション */
+@keyframes textExpand {
+    0% { font-size: 3rem; }
+    50% { font-size: 4.5rem; }
+    100% { font-size: 3rem; }
+}
+
+.color-change {
+    animation: colorChange 2s ease-in-out, glow 1.5s ease-in-out, textExpand 1.5s ease-in-out;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+}
+
 /* 呼吸アニメーション定義 - サイズが大きくなったり小さくなったりする効果 */
 @keyframes breathe {
     0%, 100% { transform: scale(1); } /* 開始と終了は通常サイズ */
