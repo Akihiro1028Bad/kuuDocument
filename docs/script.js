@@ -3,28 +3,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const kuuText = document.getElementById('kuuText');
     const pronounceButton = document.getElementById('pronounceButton');
     const kuuUsageSection = document.getElementById('kuuUsage');
-    
-    // マウスホバー時の「くぅー」テキストのアニメーション
-    kuuText.addEventListener('mouseover', function() {
-        this.style.animation = 'none';
-        setTimeout(() => {
-            this.style.animation = 'breathe 1.5s infinite ease-in-out';
-        }, 10);
-    });
-    
-    // 発音ボタンの効果
+
+    kuuText.style.animation = 'breathe 1.5s infinite ease-in-out';
+
     pronounceButton.addEventListener('click', function() {
-        // 視覚的フィードバックで発音をシミュレーション
-        kuuText.style.transform = 'scale(1.3)';
-        kuuText.textContent = 'くぅーーーっ!';
-        
-        setTimeout(() => {
-            kuuText.style.transform = 'scale(1)';
-            kuuText.textContent = 'くぅー';
-        }, 1000);
-        
-        // 後で音声機能を追加する場合に音を再生
-        // audioElement.play();
+        // すでにアニメーションが適用されていた場合、一旦削除して再適用
+        kuuText.classList.remove('shake', 'wave', 'color-change');
+        void kuuText.offsetWidth; // ← これでリセットを強制する
+
+        // くぅーのテキスト変化
+        kuuText.textContent = "くぅーーー！";
+        setTimeout(() => kuuText.textContent = "くぅー", 2000);
+
+        // Web Speech API で「くぅー」を発音（感情を強調）
+        let msg = new SpeechSynthesisUtterance("くぅーーー！");
+        msg.lang = 'ja-JP';
+        msg.pitch =  7.8;
+        msg.rate = 0.3;
+        msg.volume = 3.7; // 声のボリュームを上げる
+        speechSynthesis.speak(msg);
+
     });
     
     // 使用カテゴリーの動的作成

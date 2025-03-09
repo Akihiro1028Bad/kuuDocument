@@ -197,14 +197,14 @@ h3 {
     margin: 2rem 0;
 }
 
-/* くぅーテキストのスタイル - メインの「くぅー」表示 */
+/* くぅーの文字を中央揃え & inline-block に */
 .kuu-text {
     font-size: 3rem;
-    display: inline-block;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); /* テキストグラデーション */
-    -webkit-background-clip: text; /* テキストをクリップマスクに */
-    -webkit-text-fill-color: transparent; /* 背景を透過させてグラデーションを表示 */
-    animation: breathe 3s infinite ease-in-out; /* 呼吸アニメーション */
+    display: inline-block; /* 重要 */
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* 呼吸アニメーション定義 - サイズが大きくなったり小さくなったりする効果 */
