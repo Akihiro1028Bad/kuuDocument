@@ -1,5 +1,7 @@
 /* CSS Reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -7,11 +9,15 @@
 
 /* 変数 */
 :root {
-    --primary-color: #003366; /* 藍色 */
-    --secondary-color: #8FBC8F; /* 抹茶色 */
+    --primary-color: #003366;
+    /* 藍色 */
+    --secondary-color: #8FBC8F;
+    /* 抹茶色 */
     --text-color: #333;
-    --background-color: #f8f8f8;
-    --accent-color: #E64A19; /* オレンジ */
+    --background-color: #fff;
+    /* 背景色を白に変更 */
+    --accent-color: #E64A19;
+    /* オレンジ */
 }
 
 /* 基本スタイル */
@@ -69,6 +75,8 @@ main {
 
 .section:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    /* hover時に影を強く */
 }
 
 .section h2 {
@@ -136,6 +144,7 @@ footer {
     width: 100%;
     height: 100%;
     background-color: var(--background-color);
+    /* 背景色を白に設定 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,12 +162,15 @@ footer {
     font-size: 3.5rem;
     font-weight: 700;
     color: var(--primary-color);
+    /* 文字色を藍色に設定 */
     display: flex;
 }
 
 .char {
-    animation: float 2s infinite alternate;
-    display: inline-block;
+    opacity: 0;
+    /* 初期状態では非表示 */
+    animation: fadeInChar 1s ease-in-out forwards;
+    /* フェードインアニメーション */
 }
 
 .char:nth-child(2) {
@@ -169,30 +181,40 @@ footer {
     animation-delay: 0.6s;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-20px);
-    }
+.char:nth-child(4) {
+    animation-delay: 0.9s;
+}
+
+.char:nth-child(5) {
+    animation-delay: 1.2s;
 }
 
 /* keyframes */
+@keyframes fadeInChar {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Utility class */
 .fade-in {
-  animation: fadeIn 0.8s ease-out both;
+    animation: fadeIn 0.8s ease-out both;
 }
 
 /* レスポンシブデザイン */
@@ -215,5 +237,144 @@ footer {
 
     .styled-list li {
         font-size: 0.9rem;
+    }
+
+    /* styles.css */
+
+    /* 既存のCSSは省略 */
+
+    /* くぅーボタンセクションのスタイル */
+    #kuu-button-section {
+        text-align: center;
+        padding: 50px;
+        /* パディングを大きく */
+        background-color: #f0f0f0;
+        /* 背景色を少し変更 */
+        border-radius: 15px;
+        /* 角を丸く */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        /* 影を大きく */
+    }
+
+    #kuu-button {
+        font-size: 4rem;
+        /* フォントサイズを大きく */
+        padding: 30px 60px;
+        /* パディングを大きく */
+        background-color: var(--accent-color);
+        color: #fff;
+        border: none;
+        border-radius: 15px;
+        /* 角を丸く */
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        /* トランジションを滑らかに */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        /* 影を追加 */
+        font-family: 'M PLUS 1p', sans-serif;
+        /* 少しPOPなフォントに変更 */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        /* 文字に影を追加 */
+        position: relative;
+        /* 疑似要素の基準位置 */
+        overflow: hidden;
+        /* 範囲外を隠す */
+    }
+
+    /* ボタン押下時のアニメーション */
+    #kuu-button:hover {
+        transform: scale(1.1);
+        /* 少し拡大 */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        /* 影を強調 */
+    }
+
+    #kuu-button:active {
+        transform: scale(0.9);
+        /* 縮小 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        /* 影を弱める */
+    }
+
+    /* 疑似要素でリップルエフェクト */
+    #kuu-button::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.3);
+        /* 白色の半透明 */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 50%;
+        transform: scale(5);
+        /* 大きく拡大 */
+        pointer-events: none;
+        /* イベントを透過 */
+    }
+
+    #kuu-button:active::after {
+        opacity: 1;
+        /* 表示 */
+        transition: opacity 0s ease;
+        /* 即時 */
+    }
+
+    #kuu-text {
+        font-size: 5rem;
+        /* フォントサイズを大きく */
+        margin-top: 30px;
+        /* マージンを大きく */
+        font-weight: 900;
+        /* 極太 */
+        color: var(--primary-color);
+        /* 文字色を藍色に */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        /* 文字に影を追加 */
+        animation: pulse 1s infinite alternate;
+        /* パルスアニメーション */
+    }
+
+    /* パルスアニメーション */
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(1.1);
+        }
+    }
+
+    /* レベル、称号などのスタイル */
+    #kuu-button-section p {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        color: #555;
+    }
+
+    /* リセットボタンのスタイル */
+    #reset-button {
+        padding: 15px 30px;
+        /* パディングを大きく */
+        background-color: #ddd;
+        border: none;
+        border-radius: 10px;
+        /* 角を丸く */
+        cursor: pointer;
+        margin-top: 30px;
+        /* マージンを大きく */
+        transition: background-color 0.3s ease;
+        /* トランジションを追加 */
+        font-size: 1.1rem;
+        /* フォントサイズを少し大きく */
+    }
+
+    #reset-button:hover {
+        background-color: #bbb;
+        /* ホバー時に色を変更 */
     }
 }
