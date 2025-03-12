@@ -1,0 +1,247 @@
+/* 全体的なスタイル */
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FFC107;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --accent-color: #03A9F4;
+    --mobile-breakpoint: 768px;
+}
+
+body {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-variation-settings: "wght" 400;
+    line-height: 1.7;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* ヘッダー */
+header {
+    background-color: #fff;
+    padding: 3rem 2rem; /* paddingを小さく */
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    color: var(--primary-color);
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+    opacity: 0.3;
+    z-index: -1;
+    animation: gradientAnimation 10s infinite alternate;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(50%);
+    }
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3rem; /* font-sizeを小さく */
+    font-variation-settings: "wght" 700;
+    letter-spacing: -0.05em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+    transition: color 0.3s ease-in-out;
+}
+
+header h1:hover {
+    color: var(--secondary-color);
+}
+
+header p {
+    font-size: 1.2rem; /* font-sizeを小さく */
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+/* メインコンテンツ */
+main {
+    padding: 3rem 2rem; /* paddingを小さく */
+}
+
+/* セクション */
+.section {
+    background-color: #fff;
+    padding: 3rem; /* paddingを小さく */
+    margin-bottom: 3rem; /* margin-bottomを小さく */
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-size: 2.2rem; /* font-sizeを小さく */
+    margin-top: 0;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    border-bottom: 4px solid var(--secondary-color);
+    padding-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section h2::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 30%;
+    height: 4px;
+    background-color: var(--accent-color);
+}
+
+/* サブセクション */
+.subsection {
+    margin-bottom: 2.5rem; /* margin-bottomを小さく */
+}
+
+.subsection h3 {
+    font-size: 1.6rem; /* font-sizeを小さく */
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.subsection h4 {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: #777;
+    font-style: italic;
+}
+
+/* リスト */
+.styled-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.styled-list li {
+    margin-bottom: 0.8rem; /* margin-bottomを小さく */
+    display: flex;
+    align-items: center;
+    font-size: 1rem; /* font-sizeを小さく */
+}
+
+.styled-list li i {
+    margin-right: 0.6rem; /* margin-rightを小さく */
+    color: var(--accent-color);
+    font-size: 1.1rem; /* font-sizeを小さく */
+    width: 1.2em;
+    text-align: center;
+}
+
+/* コード */
+code {
+    background-color: #f2f2f2;
+    padding: 4px 6px; /* paddingを小さく */
+    border-radius: 6px;
+    font-family: monospace;
+}
+
+/* フッター */
+footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 1.2rem; /* paddingを小さく */
+    font-size: 0.9rem; /* font-sizeを小さく */
+}
+
+/* ローディングアニメーション */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.kuu-animation {
+    font-size: 4rem; /* font-sizeを小さく */
+    font-weight: bold;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: explode 1.5s forwards; /* animation時間を短く */
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    30% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    70% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100vw);
+        opacity: 0;
+    }
+}
+
+/* レスポンシブデザイン */
+@media (max-width: var(--mobile-breakpoint)) {
+    header h1 {
+        font-size: 2.5rem; /* さらにfont-sizeを小さく */
+    }
+
+    .section {
+        padding: 2rem; /* paddingをさらに小さく */
+    }
+
+    .section h2 {
+        font-size: 1.8rem; /* font-sizeをさらに小さく */
+    }
+}
+
+/* Section の表示に関する修正 */
+#meaning {
+  display: block; /* または適切な表示方法を指定 */
+}
