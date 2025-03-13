@@ -153,15 +153,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // バイブレーション機能の確認
     function vibrate() {
         if (navigator.vibrate) {
-            navigator.vibrate(100); // 50ミリ秒バイブレーション
+            navigator.vibrate(50); // 50ミリ秒バイブレーション
         }
     }
 
-    // 効果音を再生する関数
-    function playKuuSound() {
+    // 効果音を再生する関数（ランダム）
+    function playRandomKuuSound() {
         const sound = document.getElementById('kuuSound');
-        sound.currentTime = 0; // 毎回最初から再生
-        sound.play();
+        const sources = sound.getElementsByTagName('source');
+        const randomIndex = Math.floor(Math.random() * sources.length);
+        const randomSource = sources[randomIndex];
+
+        // 新しいsourceをaudio要素に設定し、再生
+        sound.src = randomSource.src;
+        sound.load(); // 読み込み
+        sound.play();  // 再生
     }
 
     // くぅーボタンがクリックされた時の処理
@@ -184,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         vibrate(); // バイブレーション
 
-        playKuuSound(); // 効果音を再生
+        playRandomKuuSound(); // ランダムな効果音を再生
     });
 
     // リセットボタンがクリックされた時の処理
@@ -200,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         vibrate(); // バイブレーション
-        playKuuSound(); // 効果音を再生
+        playRandomKuuSound(); // ランダムな効果音を再生
     });
 
     function updateDisplay() {
