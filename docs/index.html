@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
 
     <div id="loading-screen">
@@ -86,7 +88,7 @@
                     </ul>
                 </div>
 
-                 <div class="subsection">
+                <div class="subsection">
                     <h3>🎭 3.3. 「くぅー」のみで感情を伝える（上級者向け）</h3>
                     <p>言葉を省略して「くぅー」だけで感情を表現することも可能。</p>
                     <p class="example-title">✅ 例文</p>
@@ -125,8 +127,14 @@
                 <h2>🎉 くぅー！体験コーナー 🎉</h2>
                 <button id="kuu-button">くぅーする</button>
                 <p id="kuu-text">くぅー</p>
-                <p>レベル: <span id="level">1</span></p>
-                <p>称号: <span id="title">くぅー見習い</span></p>
+                <div class="status-display">
+                    <i class="fas fa-arrow-up"></i>
+                    レベル: <span id="level">1</span>
+                </div>
+                <div class="status-display">
+                    <i class="fas fa-award"></i>
+                    称号: <span id="title">くぅー見習い</span>
+                </div>
                 <p>連打数: <span id="count">0</span></p>
                 <p>最高連打数: <span id="max-count">0</span></p>
                 <button id="reset-button">リセット</button>
@@ -145,4 +153,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

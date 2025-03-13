@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const countDisplay = document.getElementById('count');
     const maxCountDisplay = document.getElementById('max-count');
     const resetButton = document.getElementById('reset-button');
-    
+
 
     let level = 1;
     let count = 0;
@@ -150,37 +150,63 @@ document.addEventListener('DOMContentLoaded', function() {
 
     animate();
 
+    // バイブレーション機能の確認
+    function vibrate() {
+        if (navigator.vibrate) {
+            navigator.vibrate(50); // 50ミリ秒バイブレーション
+        }
+    }
 
-
+    // くぅーボタンがクリックされた時の処理
     kuuButton.addEventListener('click', function() {
-        count++;
-        updateKuuText();
+        count++; // 連打数を増やす
+        updateKuuText(); // くぅーテキストを更新
 
         if (count > maxCount) {
-            maxCount = count;
+            maxCount = count; // 最高連打数を更新
         }
 
         if (count % 10 === 0) { // 例: 10回クリックごとにレベルアップ
-            levelUp();
+            levelUp(); // レベルアップ
         }
 
-        updateDisplay();
+        updateDisplay(); // 表示を更新
 
         // パーティクル生成
         createParticles();
+
+        vibrate(); // バイブレーション
     });
 
+    // リセットボタンがクリックされた時の処理
     resetButton.addEventListener('click', function() {
         if (confirm("リセットしますか？")) {
-            level = 1;
-            count = 0;
-            maxCount = 0;
-            title = "くぅー見習い";
-            kuuVariations.length = 8;  // 初期状態のバリエーションに戻す
-            updateDisplay();
-            kuuText.textContent = "くぅー";
+            level = 1; // レベルを初期化
+            count = 0; // 連打数を初期化
+            maxCount = 0; // 最高連打数を初期化
+            title = "くぅー見習い"; // 称号を初期化
+            kuuVariations.length = 8; // 初期状態のバリエーションに戻す
+            updateDisplay(); // 表示を更新
+            kuuText.textContent = "くぅー"; // くぅーテキストを初期化
         }
+
+        vibrate(); // バイブレーション
     });
+
+    function updateDisplay() {
+        levelDisplay.textContent = level;
+        titleDisplay.textContent = title;
+        countDisplay.textContent = count;
+        maxCountDisplay.textContent = maxCount;
+
+        // レベルアップアニメーションの適用
+        levelDisplay.classList.add('level-up-animation');
+        titleDisplay.classList.add('level-up-animation');
+        setTimeout(() => {
+            levelDisplay.classList.remove('level-up-animation');
+            titleDisplay.classList.remove('level-up-animation');
+        }, 500);
+    }
 
     updateDisplay(); // 初期表示
 });
