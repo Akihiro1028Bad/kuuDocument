@@ -153,8 +153,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // バイブレーション機能の確認
     function vibrate() {
         if (navigator.vibrate) {
-            navigator.vibrate(50); // 50ミリ秒バイブレーション
+            navigator.vibrate(100); // 50ミリ秒バイブレーション
         }
+    }
+
+    // 効果音を再生する関数
+    function playKuuSound() {
+        const sound = document.getElementById('kuuSound');
+        sound.currentTime = 0; // 毎回最初から再生
+        sound.play();
     }
 
     // くぅーボタンがクリックされた時の処理
@@ -176,6 +183,8 @@ document.addEventListener('DOMContentLoaded', function() {
         createParticles();
 
         vibrate(); // バイブレーション
+
+        playKuuSound(); // 効果音を再生
     });
 
     // リセットボタンがクリックされた時の処理
@@ -191,6 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         vibrate(); // バイブレーション
+        playKuuSound(); // 効果音を再生
     });
 
     function updateDisplay() {
