@@ -365,11 +365,11 @@ document.addEventListener('DOMContentLoaded', function() {
         updateDisplay(); // 表示を更新
 
         // パーティクル生成
-        createParticles();
+        //createParticles();
 
-        vibrate(); // バイブレーション
+        //vibrate(); // バイブレーション
 
-        playRandomKuuSound(); // ランダムな効果音を再生
+        //playRandomKuuSound(); // ランダムな効果音を再生
     });
 
     // リセットボタンがクリックされた時の処理
