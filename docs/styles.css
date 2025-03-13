@@ -254,13 +254,13 @@ footer {
         /* 角を丸く */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         /* 影を大きく */
+        position: relative; /* パーティクル表示の基準位置 */
+        overflow: hidden;
     }
 
     #kuu-button {
-        font-size: 4rem;
-        /* フォントサイズを大きく */
-        padding: 30px 60px;
-        /* パディングを大きく */
+        font-size: 1.5rem; /* ボタンのフォントサイズをさらに小さく */
+        padding: 10px 20px; /* パディングをさらに小さく */
         background-color: var(--accent-color);
         color: #fff;
         border: none;
@@ -279,6 +279,8 @@ footer {
         /* 疑似要素の基準位置 */
         overflow: hidden;
         /* 範囲外を隠す */
+        position: relative; /* z-indexを有効にするために必要 */
+        z-index: 2; /* Canvasよりも背面に表示 */
     }
 
     /* ボタン押下時のアニメーション */
@@ -324,18 +326,13 @@ footer {
     }
 
     #kuu-text {
-        font-size: 5rem;
-        /* フォントサイズを大きく */
-        margin-top: 30px;
-        /* マージンを大きく */
         font-weight: 900;
-        /* 極太 */
-        color: var(--primary-color);
-        /* 文字色を藍色に */
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        /* 文字に影を追加 */
         animation: pulse 1s infinite alternate;
-        /* パルスアニメーション */
+        font-size: 9rem; /* テキストのフォントサイズをさらに大きく */
+        margin-top: 10px; /* マージンを調整 */
+        color: var(--accent-color); /* テキストの色を変更 */
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6); /* シャドウをさらに強く */
+        letter-spacing: 0.2rem; /* 文字間隔を少し広げる */
     }
 
     /* パルスアニメーション */
@@ -376,5 +373,14 @@ footer {
     #reset-button:hover {
         background-color: #bbb;
         /* ホバー時に色を変更 */
+    }
+
+    /* パーティクルCanvasのスタイル */
+    #particle-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none; /* イベントを透過 */
+        z-index: 1; /* ボタンよりも前面に表示 */
     }
 }
