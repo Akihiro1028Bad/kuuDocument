@@ -239,12 +239,8 @@ footer {
         font-size: 0.9rem;
     }
 
-    /* styles.css */
-
-    /* 既存のCSSは省略 */
-
-    /* くぅーボタンセクションのスタイル */
-    #kuu-button-section {
+   /* くぅーボタンセクションのスタイル */
+   #kuu-button-section {
         text-align: center;
         padding: 50px;
         /* パディングを大きく */
@@ -254,13 +250,59 @@ footer {
         /* 角を丸く */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         /* 影を大きく */
-        position: relative; /* パーティクル表示の基準位置 */
+        position: relative;
+        /* パーティクル表示の基準位置 */
         overflow: hidden;
+
+        display: flex; /* Flexboxを使用 */
+        flex-direction: column; /* 縦方向に要素を並べる */
+        align-items: center; /* 水平方向中央揃え */
+    }
+
+    /* レベル、称号などのスタイル */
+    #kuu-button-section .status-display {
+        font-size: 1.2rem;
+        margin-top: 15px;
+        color: #555;
+        display: flex;
+        /* Flexboxを使用 */
+        align-items: center;
+        /* 垂直方向中央揃え */
+        justify-content: center;
+        /* 水平方向中央揃え */
+        text-align: center;
+    }
+
+    #kuu-button-section .status-display i {
+        margin-right: 8px;
+        /* アイコンとテキストの間隔 */
+        color: var(--secondary-color);
+        /* アイコンの色 */
+        font-size: 1.4rem;
+        /* アイコンのサイズ */
+    }
+
+    #kuu-button-section .status-display span {
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+        /* 丸ゴシック体に変更 */
+        font-weight: bold;
+        /* 太字 */
+        color: var(--primary-color);
+        /* メインカラー */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        /* 文字に影を追加 */
+    }
+
+    #kuu-button-section p {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        color: #555;
     }
 
     #kuu-button {
-        font-size: 1.5rem; /* ボタンのフォントサイズをさらに小さく */
-        padding: 10px 20px; /* パディングをさらに小さく */
+        font-size: 1.5rem;
+        /* ボタンのフォントサイズをさらに小さく */
+        padding: 15px 30px; /* パディングを大きく */
         background-color: var(--accent-color);
         color: #fff;
         border: none;
@@ -279,8 +321,32 @@ footer {
         /* 疑似要素の基準位置 */
         overflow: hidden;
         /* 範囲外を隠す */
-        position: relative; /* z-indexを有効にするために必要 */
-        z-index: 2; /* Canvasよりも背面に表示 */
+        position: relative;
+        /* z-indexを有効にするために必要 */
+        z-index: 2;
+        /* Canvasよりも背面に表示 */
+    }
+
+    /* レベルアップ時のアニメーション */
+    @keyframes levelUp {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        50% {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .level-up-animation {
+        animation: levelUp 0.5s ease-in-out;
     }
 
     /* ボタン押下時のアニメーション */
@@ -292,8 +358,13 @@ footer {
     }
 
     #kuu-button:active {
-        transform: scale(0.9);
-        /* 縮小 */
+        transform: scale(0.95); /* ほんの少し縮小 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        /* 影を弱める */
+    }
+
+    #reset-button:active {
+        transform: scale(0.95); /* ほんの少し縮小 */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         /* 影を弱める */
     }
@@ -328,11 +399,16 @@ footer {
     #kuu-text {
         font-weight: 900;
         animation: pulse 1s infinite alternate;
-        font-size: 9rem; /* テキストのフォントサイズをさらに大きく */
-        margin-top: 10px; /* マージンを調整 */
-        color: var(--accent-color); /* テキストの色を変更 */
-        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6); /* シャドウをさらに強く */
-        letter-spacing: 0.2rem; /* 文字間隔を少し広げる */
+        font-size: 9rem;
+        /* テキストのフォントサイズをさらに大きく */
+        margin-top: 10px;
+        /* マージンを調整 */
+        color: var(--accent-color);
+        /* テキストの色を変更 */
+        text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+        /* シャドウをさらに強く */
+        letter-spacing: 0.2rem;
+        /* 文字間隔を少し広げる */
     }
 
     /* パルスアニメーション */
@@ -380,7 +456,9 @@ footer {
         position: absolute;
         top: 0;
         left: 0;
-        pointer-events: none; /* イベントを透過 */
-        z-index: 1; /* ボタンよりも前面に表示 */
+        pointer-events: none;
+        /* イベントを透過 */
+        z-index: 1;
+        /* ボタンよりも前面に表示 */
     }
 }
