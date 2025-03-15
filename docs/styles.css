@@ -396,6 +396,19 @@ footer {
         /* 即時 */
     }
 
+    /* 無効化されたボタンのスタイル */
+    #kuu-button:disabled {
+        cursor: not-allowed; /* カーソルを押せないマークに変更 */
+        opacity: 0.5; /* 透明度を下げて無効化を強調 */
+        transform: none !important; /* ホバーやクリック時の拡大を無効化 */
+        box-shadow: none !important; /* 影を消す */
+    }
+
+    /* :disabled の場合は疑似要素のリップルエフェクトも無効化 */
+    #kuu-button:disabled::after {
+        display: none; /* エフェクトを表示させない */
+    }
+
     #kuu-text {
         font-weight: 900;
         animation: pulse 1s infinite alternate;

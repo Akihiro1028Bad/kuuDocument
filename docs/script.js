@@ -349,6 +349,22 @@ document.addEventListener('DOMContentLoaded', function() {
         sound.src = randomSource.src;
         sound.load(); // 読み込み
 
+        // 再生開始時の処理
+        sound.onplay = function() {
+            console.log("再生開始");
+            // ここに再生開始時の処理を追加
+            kuuButton.disabled = true;
+            kuuButton.innerHTML = 'くぅー中'
+        };
+
+        // 再生終了時の処理
+        sound.onended = function() {
+            console.log("再生終了");
+            // ここに再生終了時の処理を追加
+            kuuButton.disabled = false;
+            kuuButton.innerHTML = 'くぅーする'
+        };
+
         sound.play();  // 再生
     }
 
@@ -369,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //vibrate(); // バイブレーション
 
-        //playRandomKuuSound(); // ランダムな効果音を再生
+        playRandomKuuSound(); // ランダムな効果音を再生
     });
 
     // リセットボタンがクリックされた時の処理
