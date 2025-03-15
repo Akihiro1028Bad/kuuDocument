@@ -497,6 +497,12 @@ footer {
         font-size: 1.2rem; /* アイコンのサイズを大きくする */
     }
 
+    .pronunciation-button:active {
+        background-color: #558B2F; /* タップ時に背景色を少し暗くする */
+        transform: scale(0.95); /* タップ時に少し縮小 */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* タップ時に影を弱める */
+    }
+
     /* パーティクルCanvasのスタイル */
     #particle-canvas {
         position: absolute;
