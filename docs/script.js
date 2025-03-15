@@ -23,6 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const countDisplay = document.getElementById('count');
     const nextLevelDisplay = document.getElementById('next-level'); // 追加
     const resetButton = document.getElementById('reset-button');
+    // 発音再生機能
+    const playPronunciationButton = document.getElementById('play-pronunciation');
+    const pronunciationAudio = document.getElementById('pronunciation-audio');
+
+    playPronunciationButton.addEventListener('click', function() {
+        pronunciationAudio.play();
+    });
 
 
     let level = 1;
