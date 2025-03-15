@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const pronunciationAudio = document.getElementById('pronunciation-audio');
 
     playPronunciationButton.addEventListener('click', function() {
-        
 
         // 再生開始時の処理
         pronunciationAudio.onplay = function() {
@@ -424,9 +423,6 @@ document.addEventListener('DOMContentLoaded', function() {
             updateDisplay(); // 表示を更新
             kuuText.textContent = "くぅー"; // くぅーテキストを初期化
         }
-
-        vibrate(); // バイブレーション
-        playRandomKuuSound(); // ランダムな効果音を再生
     });
 
     function updateDisplay() {
