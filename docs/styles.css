@@ -464,6 +464,39 @@ footer {
         /* ホバー時に色を変更 */
     }
 
+    /* 発音ボタンのスタイル（モバイル向け） */
+    .pronunciation-button {
+        background-color: #3CB371; /* 背景色を濃い緑色にする */
+        color: #fff; /* 文字色を白にする */
+        border: none; /* 枠線を消す */
+        padding: 12px 24px; /* パディング（余白）を大きくする */
+        border-radius: 12px; /* 角を丸くする */
+        cursor: pointer; /* カーソルをポインター（指マーク）にする */
+        font-size: 1rem; /* フォントサイズを大きくする */
+        transition: background-color 0.3s ease; /* ホバー時のアニメーションを追加 */
+        margin-left: 10px; /* IPA表記との間隔を調整 */
+        box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2); /* 影を追加 */
+        -webkit-tap-highlight-color: transparent; /* タップ時のハイライトを消す（iOS） */
+        -webkit-appearance: none; /* デフォルトスタイルをリセット */
+        display: inline-flex; /* アイコンとテキストを横並びにする */
+        align-items: center; /* 垂直方向に中央揃え */
+        justify-content: center; /* 水平方向に中央揃え */
+    }
+
+    .pronunciation-button:hover {
+        background-color: #6B8E23; /* ホバー時の背景色を少し濃くする */
+    }
+
+    .pronunciation-button:active {
+        transform: scale(0.95); /* タップ時に少し縮小 */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* タップ時に影を弱める */
+    }
+
+    .pronunciation-button i {
+        margin-right: 8px; /* アイコンとテキストの間隔を調整 */
+        font-size: 1.2rem; /* アイコンのサイズを大きくする */
+    }
+
     /* パーティクルCanvasのスタイル */
     #particle-canvas {
         position: absolute;

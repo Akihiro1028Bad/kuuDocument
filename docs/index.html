@@ -36,7 +36,6 @@
                     <li><i class="fas fa-check-circle"></i> 「くぅー」の基本的な意味と使い方</li>
                     <li><i class="fas fa-check-circle"></i> 発音のバリエーションとニュアンスの違い</li>
                     <li><i class="fas fa-check-circle"></i> 文化的な背景や使用シーン</li>
-                    <li><i class="fas fa-check-circle"></i> 類義語との違い</li>
                 </ul>
             </section>
 
@@ -60,17 +59,19 @@
                     <h3>🔊 2.2. 発音</h3>
                     <ul class="styled-list">
                         <li><i class="fas fa-bullhorn"></i> IPA表記：/kuː/</li>
+                        <li><i class="fas fa-bullhorn"></i> IPA表記：/kuː/ <button id="play-pronunciation" class="pronunciation-button"><i class="fas fa-play-circle"></i> 発音を聞く</button></li>
                         <li><i class="fas fa-spell-check"></i> カタカナ表記：クゥー</li>
                         <li><i class="fas fa-info-circle"></i> 音声的特徴：発音の長さで感情が変化</li>
                     </ul>
                 </div>
+                <audio id="pronunciation-audio" src="kuu7.mp3" preload="auto"></audio>
             </section>
 
             <section id="meaning" class="section">
                 <h2>💬 3. 意味と用法</h2>
                 <div class="subsection">
                     <h3>🎐 3.1. リラックス感・満足感の表現</h3>
-                    <p>快適さや満足感を得た際に自然に発せられる。</p>
+                    <p>使用者が快適さや満足感を得た際に自然に発せられる。</p>
                     <p class="example-title">✅ 例文</p>
                     <ul class="styled-list">
                         <li><i class="fas fa-hot-tub"></i> 「くぅー、温泉はやっぱり最高だな。」（温泉でリラックス）</li>
@@ -111,7 +112,7 @@
                 </div>
 
                 <div class="subsection">
-                    <h3>👔 3.5. 「くぅー」をフォーマルにする表現</h3>
+                    <h3>👔 3.5. 「くぅー」をフォーマルにする表現（ビジネスマン向け）</h3>
                     <p>「です」や「ですね」を付け加えることで、フォーマルな場面でも適用しやすい表現にできる。</p>
                     <p class="example-title">✅ 例文</p>
                     <ul class="styled-list">
@@ -137,7 +138,7 @@
                     称号: <span id="title">くぅー見習い</span>
                 </div>
                 <p>連打数: <span id="count">0</span></p>
-                <p>次のレベルまで: <span id="next-level">10</span> 回</p> <!-- 最高連打数を削除して次のレベルまでの回数を表示 -->
+                <p>次のレベルまで: <span id="next-level">10</span> 回</p>
                 <button id="reset-button">リセット</button>
             </section>
 
