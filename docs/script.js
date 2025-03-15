@@ -28,6 +28,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const pronunciationAudio = document.getElementById('pronunciation-audio');
 
     playPronunciationButton.addEventListener('click', function() {
+
+        // 再生開始時の処理
+        pronunciationAudio.onplay = function() {
+            console.log("再生開始");
+            // ここに再生開始時の処理を追加
+            // ボタンを無効化し、テキストを「再生中」に変更
+            playPronunciationButton.disabled = true;
+            playPronunciationButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 再生中...';
+        };
+
+        // 再生終了時の処理
+        pronunciationAudio.onended = function() {
+            console.log("再生終了");
+            // ここに再生終了時の処理を追加
+            playPronunciationButton.disabled = false;
+            playPronunciationButton.innerHTML = '<i class="fas fa-play-circle"></i>発音を聞く';
+        };
         pronunciationAudio.play();
     });
 
@@ -361,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("再生開始");
             // ここに再生開始時の処理を追加
             kuuButton.disabled = true;
-            kuuButton.innerHTML = 'くぅー中'
+            kuuButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>くぅー中...'
         };
 
         // 再生終了時の処理
@@ -406,9 +423,6 @@ document.addEventListener('DOMContentLoaded', function() {
             updateDisplay(); // 表示を更新
             kuuText.textContent = "くぅー"; // くぅーテキストを初期化
         }
-
-        vibrate(); // バイブレーション
-        playRandomKuuSound(); // ランダムな効果音を再生
     });
 
     function updateDisplay() {
