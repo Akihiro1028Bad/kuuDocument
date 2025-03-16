@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const loadingScreen = document.getElementById('loading-screen');
+    const levelUpPopup = document.getElementById('level-up-popup');
+    levelUpPopup.classList.add('hidden');
 
     // ローディング画面を非表示
     setTimeout(() => {
@@ -18,12 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // くぅーボタンの機能
     const kuuButton = document.getElementById('kuu-button');
     const kuuText = document.getElementById('kuu-text');
+    const resetButton = document.getElementById('reset-button');
     const levelDisplay = document.getElementById('level');
     const titleDisplay = document.getElementById('title');
     const countDisplay = document.getElementById('count');
     const nextLevelDisplay = document.getElementById('next-level'); // 追加
-    const resetButton = document.getElementById('reset-button');
-    // 発音再生機能
+    
     const playPronunciationButton = document.getElementById('play-pronunciation');
     const pronunciationAudio = document.getElementById('pronunciation-audio');
 
@@ -52,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let level = 1;
     let count = 0;
     let title = "くぅー見習い";
-    let levelUpThreshold = 5; // レベルアップに必要な回数
+    let levelUpThreshold = 3; // レベルアップに必要な回数
 
     const kuuVariations = [
         "くぅー",
@@ -281,6 +283,25 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             title = "伝説のくぅー";
         }
+    
+         // ポップアップのテキストを設定
+        const levelUpMessage = document.getElementById('level-up-message');
+        levelUpMessage.innerHTML = `レベルアップ！<br/>称号: ${title}`;
+
+        // ポップアップを表示
+        const levelUpPopup = document.getElementById('level-up-popup');
+        levelUpPopup.classList.remove('hidden');
+        levelUpPopup.classList.add('active');
+        levelUpPopup.style.visibility = "visible";
+        levelUpPopup.style.opacity = "1";
+        levelUpPopup.style.animation = "popup-jump 0.5s ease-out";
+
+        // アニメーションが終わった後に非表示にする
+        setTimeout(() => {
+            levelUpPopup.style.opacity = "0";
+            levelUpPopup.style.visibility = "hidden";
+            levelUpPopup.classList.remove('active');
+        }, 1000); // 2秒後に非表示
     }
 
     // パーティクル用Canvasの作成と初期化
@@ -329,12 +350,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let particlesArray = [];
 
-    function createParticles() {
-        for (let i = 0; i < 20; i++) {
-            particlesArray.push(new Particle(kuuButton.offsetWidth / 2, kuuButton.offsetHeight / 2));
-        }
-    }
-
     function handleParticles() {
         for (let i = 0; i < particlesArray.length; i++) {
             particlesArray[i].update();
@@ -344,21 +359,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 particlesArray.splice(i, 1);
                 i--;
             }
-        }
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        handleParticles();
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    // バイブレーション機能の確認
-    function vibrate() {
-        if (navigator.vibrate) {
-            navigator.vibrate(50); // 50ミリ秒バイブレーション
         }
     }
 
@@ -394,7 +394,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // くぅーボタンがクリックされた時の処理
     kuuButton.addEventListener('click', function() {
-
         count++; // 連打数を増やす
         updateKuuText(); // くぅーテキストを更新
 
@@ -403,13 +402,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         updateDisplay(); // 表示を更新
-
-        // パーティクル生成
-        //createParticles();
-
-        //vibrate(); // バイブレーション
-
         playRandomKuuSound(); // ランダムな効果音を再生
+
     });
 
     // リセットボタンがクリックされた時の処理
@@ -424,21 +418,6 @@ document.addEventListener('DOMContentLoaded', function() {
             kuuText.textContent = "くぅー"; // くぅーテキストを初期化
         }
     });
-
-    function updateDisplay() {
-        levelDisplay.textContent = level;
-        titleDisplay.textContent = title;
-        countDisplay.textContent = count;
-        nextLevelDisplay.textContent = levelUpThreshold - (count % levelUpThreshold); // 次のレベルまでの回数を計算
-
-        // レベルアップアニメーションの適用
-        levelDisplay.classList.add('level-up-animation');
-        titleDisplay.classList.add('level-up-animation');
-        setTimeout(() => {
-            levelDisplay.classList.remove('level-up-animation');
-            titleDisplay.classList.remove('level-up-animation');
-        }, 500);
-    }
 
     updateDisplay(); // 初期表示
 });
