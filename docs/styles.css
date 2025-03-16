@@ -503,6 +503,51 @@ footer {
         box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* タップ時に影を弱める */
     }
 
+    .level-up-popup {
+        position: fixed; /* 画面に固定 */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* 中央配置 */
+        background-color: rgba(0, 0, 0, 0.8); /* 半透明の黒 */
+        color: white; /* 文字色を白に */
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 1001; /* 他の要素よりも前面に表示 */
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        opacity: 0; /* 初期状態では非表示 */
+        visibility: hidden;
+        transition: opacity 0.3s ease-out, visibility 0.3s ease-out; /* スムーズな非表示のため */
+    }
+    
+    @keyframes popup-jump {
+        0% {
+            opacity: 0;
+            visibility: visible;
+            transform: translate(-50%, -40%); /* 少し上に配置 */
+        }
+        50% {
+            opacity: 1;
+            transform: translate(-50%, -55%); /* 一番上に跳ね上がる */
+        }
+        100% {
+            opacity: 1;
+            transform: translate(-50%, -50%); /* 元の位置に戻る */
+        }
+    }
+    
+    .level-up-popup.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .level-up-popup.active {
+        visibility: visible;
+        opacity: 1;
+        animation: popup-jump 0.5s ease-out;
+    }
+
     /* パーティクルCanvasのスタイル */
     #particle-canvas {
         position: absolute;
