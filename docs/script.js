@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 2500);
 
     // くぅーボタンの機能
-    const kuuButton = document.getElementById('kuu-button');
-    const kuuText = document.getElementById('kuu-text');
-    const resetButton = document.getElementById('reset-button');
-    const levelDisplay = document.getElementById('level');
-    const titleDisplay = document.getElementById('title');
-    const countDisplay = document.getElementById('count');
+    const kuuButton        = document.getElementById('kuu-button');
+    const kuuText          = document.getElementById('kuu-text');
+    const resetButton      = document.getElementById('reset-button');
+    const levelDisplay     = document.getElementById('level');
+    const titleDisplay     = document.getElementById('title');
+    const countDisplay     = document.getElementById('count');
     const nextLevelDisplay = document.getElementById('next-level'); // 追加
     
     const playPronunciationButton = document.getElementById('play-pronunciation');
@@ -324,13 +324,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     class Particle {
         constructor(x, y) {
-            this.x = x;
-            this.y = y;
-            this.size = Math.random() * 5 + 1;
+            this.x      = x;
+            this.y      = y;
+            this.size   = Math.random() * 5 + 1;
             this.speedX = Math.random() * 3 - 1.5;
             this.speedY = Math.random() * 3 - 1.5;
-            this.color = `hsl(${Math.random() * 360}, 50%, 50%)`; // カラフルな色
-            this.life = 100; // パーティクルの寿命
+            this.color  = `hsl(${Math.random() * 360}, 50%, 50%)`; // カラフルな色
+            this.life   = 100; // パーティクルの寿命
         }
 
         update() {
@@ -364,9 +364,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 効果音を再生する関数（ランダム）
     function playRandomKuuSound() {
-        const sound = document.getElementById('kuuSound');
-        const sources = sound.getElementsByTagName('source');
-        const randomIndex = Math.floor(Math.random() * sources.length);
+        const sound        = document.getElementById('kuuSound');
+        const sources      = sound.getElementsByTagName('source');
+        const randomIndex  = Math.floor(Math.random() * sources.length);
         const randomSource = sources[randomIndex];
 
         // 新しいsourceをaudio要素に設定し、再生
@@ -375,7 +375,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 再生開始時の処理
         sound.onplay = function() {
-            console.log("再生開始");
             // ここに再生開始時の処理を追加
             kuuButton.disabled = true;
             kuuButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i>くぅー中...'
@@ -383,7 +382,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 再生終了時の処理
         sound.onended = function() {
-            console.log("再生終了");
             // ここに再生終了時の処理を追加
             kuuButton.disabled = false;
             kuuButton.innerHTML = 'くぅーする'
